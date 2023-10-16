@@ -60,6 +60,7 @@ public class HomeFragment extends Fragment {
                 Request.Method.GET,
                 Helper.PATH_TO_RESTAURANT_HOME,
                 RestaurantObject.class,
+                null,
                 createRequestSuccessListener(),
                 createRequestErrorListener());
 

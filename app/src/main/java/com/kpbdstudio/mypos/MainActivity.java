@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
-import com.kpbdstudio.mypos.Fragment.HomeFragment;
+import com.kpbdstudio.mypos.Fragment.*;
 import com.kpbdstudio.mypos.util.CustomApplication;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (id == R.id.nav_home) {
                     fragment = new HomeFragment();
-                /*} else if (id == R.id.nav_menu_category) {
+                } else if (id == R.id.nav_menu_category) {
                     fragment = new MenuCategoryFragment();
                 } else if (id == R.id.nav_order_history) {
                     fragment = new OrderHistoryFragment();
@@ -67,12 +67,12 @@ public class MainActivity extends AppCompatActivity {
                     Intent hotDealIntent = new Intent(MainActivity.this, HotDealActvity.class);
                     startActivity(hotDealIntent);
                 }
-                else if (id == R.id.nav_notification) {
-                    Intent notificationIntent = new Intent(MainActivity.this, NotificationActivity.class);
-                    startActivity(notificationIntent);
-                }
+                //else if (id == R.id.nav_notification) {
+                //    Intent notificationIntent = new Intent(MainActivity.this, NotificationActivity.class);
+                //    startActivity(notificationIntent);
+                //}
                 else if (id == R.id.nav_profile) {
-                    fragment = new ProfileFragment();*/
+                    fragment = new ProfileFragment();
                 }else if (id == R.id.nav_logout) {
                     //remove user data from shared preference
                     SharedPreferences mShared = ((CustomApplication)getApplication()).getShared().getInstanceOfSharedPreference();

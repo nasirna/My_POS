@@ -83,27 +83,30 @@ public class LoginActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(enteredEmail) || TextUtils.isEmpty(enteredPassword)){
                     Helper.displayErrorMessage(LoginActivity.this, getString(R.string.fill_all_fields));
                 }
-                /*if(!Helper.isValidEmail(enteredEmail)){
+
+                if(!Helper.isValidEmail(enteredEmail)){
                     Helper.displayErrorMessage(LoginActivity.this, getString(R.string.invalid_email));
                 }
 
-                make server call for user authentication
-                authenticateUserInRemoteServer(enteredEmail, enteredPassword);*/
+                //make server call for user authentication
+                //authenticateUserInRemoteServer(enteredEmail, enteredPassword);
                 userLogin();
             }
         });
     }
 
-    private void authenticateUserInRemoteServer(String email, String password){
+    //private void authenticateUserInRemoteServer(String email, String password){
+    private void authenticateUserInRemoteServer(String username, String password){
         Map<String, String> params = new HashMap<String,String>();
-        params.put(Helper.EMAIL, email);
+        //params.put(Helper.EMAIL, email);
+        params.put(Helper.USERNAME, username);
         params.put(Helper.PASSWORD, password);
 
         GsonRequest<LoginObject> serverRequest = new GsonRequest<LoginObject>(
                 Request.Method.POST,
                 Helper.PATH_TO_SERVER_LOGIN,
                 LoginObject.class,
-                params,
+                null,
                 createRequestSuccessListener(),
                 createRequestErrorListener());
 
@@ -121,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(LoginObject response) {
                 try {
                     Log.d(TAG, "Json Response " + response.getLoggedIn());
-                    if(response.getLoggedIn().equals("1")){
+                    //if(response.getLoggedIn().equals("1")){
                         //save login data to a shared preference
                         String userData = ((CustomApplication)getApplication()).getGsonObject().toJson(response);
                         ((CustomApplication)getApplication()).getShared().setUserData(userData);
@@ -129,9 +132,9 @@ public class LoginActivity extends AppCompatActivity {
                         // navigate to restaurant home
                         Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(loginIntent);
-                    }else{
-                        Toast.makeText(LoginActivity.this, R.string.failed_login, Toast.LENGTH_LONG).show();
-                    }
+                    //}else{
+                    //    Toast.makeText(LoginActivity.this, R.string.failed_login, Toast.LENGTH_LONG).show();
+                    //}
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -187,11 +190,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
                 //Toast.makeText(LoginActivity.this, ""+response.toString(), Toast.LENGTH_SHORT).show();
-
                 try {
                     JSONObject obj = new JSONObject(response.toString());
                     //if(!obj.getBoolean("error")){
-                    if(obj.getString("loggedIn").equals("1")){
+                    //if(obj.getString("loggedIn").equals("1")){
                         /*SharedPrefManager.getInstance(getApplicationContext())
                                 .userLogin(
                                         obj.getInt("id"),
@@ -200,20 +202,20 @@ public class LoginActivity extends AppCompatActivity {
                                 );
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         finish();*/
-                        String userData = ((CustomApplication)getApplication()).getGsonObject().toJson(response);
-                        ((CustomApplication)getApplication()).getShared().setUserData(userData);
+                    String userData = ((CustomApplication)getApplication()).getGsonObject().toJson(response);
+                    ((CustomApplication)getApplication()).getShared().setUserData(userData);
 
-                        // navigate to restaurant home
-                        Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(loginIntent);
+                    // navigate to restaurant home
+                    Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(loginIntent);
 
-                    }else{
-                        Toast.makeText(
-                                getApplicationContext(),
-                                obj.getString("message"),
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }
+                    //}else{
+                    //   Toast.makeText(
+                    //           getApplicationContext(),
+                    //           obj.getString("message"),
+                    //           Toast.LENGTH_LONG
+                    //   ).show();
+                    //}
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

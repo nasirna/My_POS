@@ -106,7 +106,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Request.Method.POST,
                 Helper.PATH_TO_SERVER_REGISTRATION,
                 LoginObject.class,
-                params,
+                null,
                 createRequestSuccessListener(),
                 createRequestErrorListener());
 

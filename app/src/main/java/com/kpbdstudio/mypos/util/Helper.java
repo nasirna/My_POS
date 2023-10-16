@@ -10,8 +10,8 @@ import java.util.Locale;
 
 public class Helper {
 
-    public static final String PUBLIC_FOLDER = "http://192.168.0.170:8080/";
-    public static final String PATH_TO_SERVER_LOGIN = PUBLIC_FOLDER + "api/auth/signin";
+    public static final String PUBLIC_FOLDER = "http://192.168.0.170:8080/api/auth/";
+    public static final String PATH_TO_SERVER_LOGIN = PUBLIC_FOLDER + "signin";
     public static final String PATH_TO_SERVER_REGISTRATION = PUBLIC_FOLDER + "register";
     public static final String PATH_TO_RESTAURANT_HOME = PUBLIC_FOLDER + "mobilerestuarant";
     public static final String PATH_TO_MENU = PUBLIC_FOLDER + "mobilemenu";
@@ -21,6 +21,7 @@ public class Helper {
     public static final String PATH_TO_MENU_ITEM_BY_CATEGORY = PUBLIC_FOLDER + "mobilemenuitem";
     public static final String PATH_TO_PLACE_ORDER = PUBLIC_FOLDER + "placeorder";
     public static final String PATH_TO_ALL_ORDER = PUBLIC_FOLDER + "allorders";
+    public static final String PUBLIC_FOLDER_IMG = "http://192.168.0.170:8080/uploads/files/";
 
 
     public static final String NEW_ACCOUNT = "Don't have an account yet?";
@@ -28,12 +29,12 @@ public class Helper {
 
     public static final String ID = "USER_ID";
     public static final String NAME = "NAME";
-    public static final String USERNAME = "USERNAME";
+    public static final String USERNAME = "username";
     public static final String EMAIL = "EMAIL";
-    public static final String PASSWORD = "PASSWORD";
+    public static final String PASSWORD = "password";
     public static final String ADDRESS = "ADDRESS";
     public static final String PHONE_NUMBER = "PHONE_NUMBER";
-    public static final String MENU_ID = "MENU_ID";
+    public static final String MENU_ID = "menu_id";
 
     public static final String USER_DATA = "USER_DATA";
     public static final String CART = "CART";
@@ -65,6 +66,4 @@ public class Helper {
         }
         return new SimpleDateFormat("d MMMM, yyyy", Locale.ENGLISH).format(stringDate);
     }
-
-
 }
